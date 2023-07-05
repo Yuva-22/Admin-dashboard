@@ -21,7 +21,7 @@ const Featured = () => {
             <p className="desc">Previous Transactions Processing...</p>
             <div className="summary">
                <div className="item">
-                   <div className="itemtitle">Target</div>
+                   <div className="itemtitle">Our Target</div>
                    <div className="itemresult positive">
                     <KeyboardArrowUpOutlinedIcon fontSize="small" />
                     <div className="resultamount">$36.4k</div>
