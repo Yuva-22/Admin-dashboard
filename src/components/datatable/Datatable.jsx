@@ -11,7 +11,7 @@ const Datatable = () => {
   const [data,setData] = useState(userRows)
 
   const handleDelete = (id) => {
-    setData(data.filter(item=>item.id !== id))
+      setData(data.filter(item=>item.id !== id))
   }
 
   const actioncolumn=[
@@ -34,13 +34,8 @@ const Datatable = () => {
           Add New
         </Link>
       </div>
-
-
-
-
-
-    <div style={{ height: 650, width: '100%' }}>
-    <DataGrid className="datagrid"
+      <div style={{ height: 650, width: '100%' }}>
+      <DataGrid className="datagrid"
       rows={data}
       columns={userColumns.concat(actioncolumn)}
       initialState={{
