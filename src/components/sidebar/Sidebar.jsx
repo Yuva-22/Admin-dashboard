@@ -11,13 +11,20 @@ import WebStoriesIcon from '@mui/icons-material/WebStories';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from "react-router-dom";
+import { DarkModeContext } from "../../context/darkModeContext";
+import { useContext } from "react";
 
 
 const Sidebar = () => {
+
+  const {dispatch} = useContext(DarkModeContext)
+
+
   return (
     <div className="sidebar">
         <div className="top">
-            <span className="logo">Admin</span>
+            <Link to="/" style={{textDecoration:"none"}}><span className="logo">Admin</span></Link>
         </div>
         <hr />
         <div className="center">
@@ -28,14 +35,18 @@ const Sidebar = () => {
                     <span>DashBoard</span>
                 </li>
                 <p className="title">LIST</p>
+                <Link to="/users" style={{textDecoration:"none"}}>
                 <li>
                     <PersonRoundedIcon className="icon"/>
                     <span>Users</span>
                 </li>
+                </Link>
+                <Link to="/products" style={{textDecoration:"none"}}>
                 <li>
                     <InventoryIcon className="icon"/>
                     <span>Products</span>
                 </li>
+                </Link>
                 <li>
                     <ShoppingCartIcon className="icon"/>
                     <span>Orders</span>
@@ -78,8 +89,8 @@ const Sidebar = () => {
             </ul>
         </div>
         <div className="bottom">
-            <div className="color"></div>
-            <div className="color"></div>
+            <div className="color" onClick={()=> dispatch({type:"LIGHT"})}></div>
+            <div className="color" onClick={()=> dispatch({type:"DARK"})}></div>
         </div>
     </div>
   )
