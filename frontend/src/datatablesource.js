@@ -1,4 +1,4 @@
-export const userColumns=[{ field:"id", headerName:"ID",width:70},
+export const userColumns=[
  { field:"user",headerName:"User",width:230,renderCell:(params)=>{
     return(
         <div className="cellwithimg">
