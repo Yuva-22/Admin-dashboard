@@ -28,7 +28,7 @@ export const userRows = [
         age: 35,
     },
     { 
-        id: 2, 
+        id:2, 
         username:"Lannister",
         img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj-czWbX4nyHqjUzCSe1iOQyGCAXmTS_B3-sDdFX8&s",
         status:"active",
