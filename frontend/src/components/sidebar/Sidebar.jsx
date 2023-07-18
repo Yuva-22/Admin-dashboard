@@ -41,12 +41,10 @@ const Sidebar = () => {
                     <span>Users</span>
                 </li>
                 </Link>
-                <Link to="/products" style={{textDecoration:"none"}}>
                 <li>
                     <InventoryIcon className="icon"/>
                     <span>Products</span>
                 </li>
-                </Link>
                 <li>
                     <ShoppingCartIcon className="icon"/>
                     <span>Orders</span>

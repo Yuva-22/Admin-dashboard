@@ -1,31 +1,33 @@
 import React from "react";
-import "./new.scss";
+import "./update.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import swal from 'sweetalert';
 
 
-const New = () => {
-  
+const Update = () => {
+
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
   const [age,setAge] = useState('')
   const [status,setStatus] = useState('')
   
   const navigate = useNavigate();
+  const {id} = useParams();
   
   const handleSubmit = (event) => {
     swal({
-      title: "User was Added",
+      title: "User details updated",
       text: "",
       icon: "success",
     });
+
     event.preventDefault();
-    axios.post('http://localhost:8081/users/new',{name,email,age,status})
+    axios.put('http://localhost:8081/users/update/'+id,{name,email,age,status})
     .then(res=>{
         navigate('/users');
     }).catch(err => console.log(err));
@@ -33,12 +35,12 @@ const New = () => {
 
   const [file,setFile] = useState("");
   return (
-    <div className="new">
+    <div className="update">
       <Sidebar />
-      <div className="newcontainer">
+      <div className="updatecontainer">
         <Navbar />
         <div className="top">
-          <h1>Add New User</h1>
+          <h1>Update User</h1>
         </div>
         <div className="bottom">
           <div className="left">
@@ -58,30 +60,30 @@ const New = () => {
               <div className="forminput">
                 <label htmlFor="">Name</label>
                 <input type="text" placeholder="Enter Name" className="form-control"
-                onChange = {e=> setName(e.target.value)} required/>
+                onChange = {e=> setName(e.target.value)} />
               </div>
               <div className="forminput">
                 <label htmlFor="">Email</label>
                 <input type="email" placeholder="Enter Email" className="form-control"
-                onChange = {e=> setEmail(e.target.value)} required />
+                onChange = {e=> setEmail(e.target.value)} />
               </div>
               <div className="forminput">
                 <label htmlFor="">Age</label>
                 <input type="number" placeholder="Enter Age" className="form-control"
-                onChange = {e=> setAge(e.target.value)} required />
+                onChange = {e=> setAge(e.target.value)} />
               </div>
               <div className="forminput">
                 <label htmlFor="" for="status">Status</label>
                 {/*<input type="text" placeholder="Active/Pending/Passive" className="form-control"
                 onChange = {e=> setStatus(e.target.value)} required/>*/}
-                <select name="status" id="status" className="status" onSelect = {e=> setStatus(e.target.value)} required >
+                <select name="status" id="status" className="status" onChange = {e=> setStatus(e.target.value)} required >
                     <option value="select">Choose Status</option>
                     <option value="Active">Active</option>
                     <option value="Pending">Pending</option>
                     <option value="Passive">Passive</option>
                 </select>
               </div>      
-              <button>Add</button>
+              <button>Update</button>
             </form>
           </div>
         </div>
@@ -90,4 +92,4 @@ const New = () => {
   )
 }
 
-export default New
+export default Update
